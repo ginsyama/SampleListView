@@ -2,6 +2,7 @@ package com.example.samplelistview;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,15 +18,21 @@ public class CustomListRow extends RelativeLayout{
 	public CustomListRow(Context context) {
 		super(context);
 		this.context = context;
-		createView();
+//		createView();
 	}
 	
 	private void createView(){
 		imageView = new ImageView(context);
 		corpInfo  = new TextView(context);
 		corpInfo1 = new TextView(context);
-		
 		corpInfo.setId(1);
+	}
+	
+	public CustomListRow createViewXML(){
+		LayoutInflater inflate = (LayoutInflater)
+		        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View view = inflate.inflate(R.layout.listrow, this, true);
+		return (CustomListRow)view;
 	}
 	
 	/**
@@ -81,6 +88,7 @@ public class CustomListRow extends RelativeLayout{
 	 * @param text
 	 */
 	public void setText(String text){
-		corpInfo.setText(text);
+		TextView tv = (TextView)findViewById(R.id.corpInfo);
+		tv.setText(text);
 	}
 }

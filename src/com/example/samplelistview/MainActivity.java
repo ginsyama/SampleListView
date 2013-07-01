@@ -93,16 +93,17 @@ public class MainActivity extends Activity {
 			if(convertView == null){
 				holder = new ViewHolder();
 				CustomListRow listRow = new CustomListRow(MainActivity.this);
-				listRow.init(position);
-				
+//				listRow.init(position);
+//				listRow.createViewXML();
+				CustomListRow listView = listRow.createViewXML();
 				holder.listRowView = listRow;
-				convertView = listRow;
+				convertView = listRow.createViewXML();;
 				convertView.setTag(holder);
 			}else{
 				holder = (ViewHolder)convertView.getTag();
 			}
 			holder.listRowView.setText((String)getItem(position));
-			holder.listRowView.viewUpdate(position);
+//			holder.listRowView.viewUpdate(position);
 			return convertView;
 		}
 		
